@@ -1,4 +1,12 @@
+
 <h1>Places</h1>
+
+<% 
+## Since they can't see post when not logged in
+if session["user_id"] == nil 
+  flash["notice"] = "You must be logged in to create or view places."
+  return 
+end %>
 
 <ul>
   <% for place in @places %>
