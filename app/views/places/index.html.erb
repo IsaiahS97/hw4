@@ -1,14 +1,16 @@
-
 <h1>Places</h1>
 
-
 <div style="padding: 16px 0;">
-  <a href="/places/new" class="btn btn-dark btn-lg px-4 py-2">New Place</a>
+  <% if @current_user %>
+    <a href="/places/new" class="btn btn-dark btn-lg px-4 py-2">New Place</a>
+  <% else %>
+    <a href="#" onclick="alert('Please log in or sign up to add a new place.'); return false;" class="btn btn-dark btn-lg px-4 py-2">New Place</a>
+  <% end %> 
 </div>
 
+<% #asked chat GPT how to add this pop up, I thought it felt more seemless for the experience than a bootstrap pop up like this, 
+#I had a flash but felt this was more simple and better UX %>
 
-<p>
-  <% for place in @places %>
-    <p><a href="/places/<%= place["id"] %>"><%= place["name"] %></a></p>
-  <% end %>
-</p>
+<% @places.each do |place| %>
+  <p><a href="/places/<%= place["id"] %>"><%= place["name"] %></a></p>
+<% end %>
