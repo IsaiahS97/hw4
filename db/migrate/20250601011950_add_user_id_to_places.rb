@@ -3,3 +3,5 @@ class AddUserIdToPlaces < ActiveRecord::Migration[7.1]
     add_column :places, :user_id, :integer
   end
 end
+
+#originally added but realized I didnt need it 
